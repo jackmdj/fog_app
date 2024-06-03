@@ -78,11 +78,63 @@ def parse(text):
     return data
     
 def getTextData():
-    text = getString()
-    text = parse(text)
-    return text
+    textString = getString()
+    textData = parse(textString)
+    return textData, textString
 
 def getData():
-    text = getTextData()
+    textData, textString = getTextData()
     image = getImageData()
-    return text, image
+    return textData, textString, image
+
+def printText(text):
+    # Define regex patterns
+    temperature_pattern = r"It is (\d+) degrees fahrenheit"
+    dew_point_pattern = r"dew point of (\d+\.?\d*) degrees fahrenheit"
+    wind_pattern = r"Wind direction is (\w+) at (\d+) miles per hour, gusting at (\d+) mph"
+    sunrise_pattern = r"Sunrise is at (\d{1,2}:\d{2} \w{2})"
+    sky_condition_pattern = r"has a sky condition of ([\w\s]+) with"
+    humidity_pattern = r"humidity is (\d+\.?\d*) percent"
+    
+    # Extract data using regular expressions
+    temperature_match = re.search(temperature_pattern, text)
+    dew_point_match = re.search(dew_point_pattern, text)
+    wind_match = re.search(wind_pattern, text)
+    sunrise_match = re.search(sunrise_pattern, text)
+    sky_condition_match = re.search(sky_condition_pattern, text)
+    humidity_match = re.search(humidity_pattern, text)
+    
+    # Get the matched groups
+    temperature = temperature_match.group(1) if temperature_match else "N/A"
+    dew_point = dew_point_match.group(1) if dew_point_match else "N/A"
+    humidity = humidity_match.group(1) if humidity_match else "N/A"
+    wind_direction = wind_match.group(1) if wind_match else "N/A"
+    wind_speed = wind_match.group(2) if wind_match else "N/A"
+    wind_gust = wind_match.group(3) if wind_match else "N/A"
+    sunrise = sunrise_match.group(1) if sunrise_match else "N/A"
+    sky_condition = sky_condition_match.group(1) if sky_condition_match else "N/A"
+    
+    # Print the information in an organized format
+    result = (
+        f"Weather Report:\n"
+        f"Sky Condition: {sky_condition}\n"
+        f"Temperature: {temperature} F\n"
+        f"Dew Point: {dew_point} F\n"
+        f"Humidity: {humidity} %\n"
+        f"Wind: {wind_direction} at {wind_speed} mph, gusting at {wind_gust} mph\n"
+        f"Sunrise: {sunrise}\n"
+        f"ML Fog Predictions:\n"
+    )
+    
+    return result
+
+def printPredictionResults(image_result, mlp_result):
+    result = (
+        "Image Classifier:\n"
+        f"  Accuracy: {image_result['prediction_accuracy']}\n"
+        f"  Prediction: {image_result['prediction']}\n\n"
+        "MLP:\n"
+        f"  Probability of Fog: {mlp_result['probability_of_fog']}\n"
+        f"  Prediction: {mlp_result['prediction']}\n"
+    )
+    return result

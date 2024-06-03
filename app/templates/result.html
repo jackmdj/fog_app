@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Prediction Result</h1>
+    <h2>Weather Information</h2>
+    <p>{{ text_info|safe }}</p> <!-- Use safe filter to render the string correctly -->
+
+    <h2>Predictions</h2>
+    <p>{{ prediction_results|safe }}</p> <!-- Use safe filter to render the string correctly -->
+    <a href="{{ url_for('routes.index') }}">Back</a>
+</body>
+</html>

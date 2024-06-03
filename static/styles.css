@@ -1,0 +1,11 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+    color: #130808;
+}
+
+form {
+    margin-top: 20px;
+}

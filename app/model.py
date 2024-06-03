@@ -22,7 +22,10 @@ class ImageModel:
         probability_percent = probability * 100  # Convert to percentage
         
         
-        return {"prediction accuracy": f"{probability_percent:.4f}%", "prediction": result}
+        return {
+            "prediction_accuracy": f"{probability_percent:.4f}%",
+            "prediction": result
+        }
     
 
 class MLPModel:
@@ -41,4 +44,7 @@ class MLPModel:
         result = "Fog" if probability >= 0.5 else "No Fog"
         probability_percent = probability * 100  # Convert to percentage
         
-        return {"probability of fog": f"{probability_percent:.4f}%", "prediction": result}
+        return {
+            "probability_of_fog": f"{probability_percent:.4f}%",
+            "prediction": result
+        }
