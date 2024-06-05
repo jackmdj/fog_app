@@ -25,14 +25,14 @@ This project is a Flask-based web application that predicts the likelihood of fo
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/fog-predictor.git
-   cd fog-predictor
+   git clone https://github.com/yourusername/fog_app.git
+   cd fog_app
    ```
 
 2. **Create and activate a virtual environment**:
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   venv\Scripts\activate
    ```
 
 3. **Install dependencies**:
@@ -40,26 +40,55 @@ This project is a Flask-based web application that predicts the likelihood of fo
    pip install -r requirements.txt
    ```
 
-## Usage
+4. **Run the terminal application**:
+   ```bash
+   python runTerminal.py
+   ```
 
-1. **Run the application locally**:
+5. **Run the web application**:
    ```bash
    python run.py
    ```
 
-2. **Access the application**:
+5. **Access the web application**:
    Open your browser and go to `http://127.0.0.1:5000/`.
+
+### Port Forwarding Setup
+
+To make your local Flask server accessible from the internet, you need to set up port forwarding on your router. Here's how you can do it:
+
+1. **Find Your Local IP Address**:
+   - On Windows: Open Command Prompt and run `ipconfig`. Look for the IPv4 address under your network connection.
+   - On macOS/Linux: Open Terminal and run `ifconfig` or `ip addr`. Look for the `inet` address under your active network connection.
+
+2. **Access Your Router Settings**:
+   - Open your web browser and go to your router's admin interface. This is typically at `http://192.168.1.1` or `http://192.168.0.1`.
+   - Log in with your router's username and password.
+
+3. **Set Up Port Forwarding**:
+   - Find the port forwarding section in your router settings (this can vary by router model).
+   - Create a new port forwarding rule:
+     - **External Port**: 5000 (or another port of your choice)
+     - **Internal IP Address**: Your local IP address (from step 1)
+     - **Internal Port**: 5000 (or the port your Flask app is running on)
+     - **Protocol**: TCP
+
+4. **Save the Port Forwarding Rule**:
+   - Save the changes and restart your router if necessary.
+
+5. **Access Your Flask App**:
+   - Use your public IP address to access your Flask app. You can find your public IP address by searching "What is my IP" on Google.
+   - Access the app via `http://<your-public-ip>:5000`.
 
 ## Project Structure
 
 ```
-my_flask_app/
-├── .ebextensions/
-│   └── python.config
+fog_app/
 ├── app/
 │   ├── __pycache__/
 │   ├── templates/
-│   │   └── ...
+│   │   ├── index.html
+│   │   └── result.html
 │   ├── __init__.py
 │   ├── model.py
 │   ├── routes.py
@@ -72,25 +101,20 @@ my_flask_app/
 ├── tests/
 │   ├── __init__.py
 │   └── test_service.py
-├── Procfile.sh
 ├── README.md
 ├── requirements.txt
 ├── run.py
-├── runTerminal.py
-└── runtime.txt
+└── runTerminal.py
 ```
 
-- `.ebextensions/`: Configuration for AWS Elastic Beanstalk.
 - `app/`: Contains the main application code.
 - `saved_models/`: Pre-trained machine learning models.
 - `static/`: Static files like CSS.
 - `tests/`: Unit tests for the application.
-- `Procfile.sh`: Script for running the application (not used with Heroku).
 - `README.md`: Project documentation.
 - `requirements.txt`: Lists the project dependencies.
 - `run.py`: Entry point for the Flask application.
-- `runTerminal.py`: Additional script for running the application.
-- `runtime.txt`: Specifies the Python runtime version.
+- `runTerminal.py`: Script for running the application in a terminal
 
 ## Implementation Details
 

@@ -7,6 +7,9 @@ from PIL import Image
 from io import BytesIO
 
 def download_image():
+    '''
+    Scrapes an image from a local webcam site.
+    '''
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0'
     }
@@ -21,6 +24,10 @@ def download_image():
             print(f"An error occurred: {e}")            
 
 def transform(image):
+    '''
+    Performs transformations on the image data to prepare
+    for model evaluation.
+    '''
     mean = [0.565084, 0.56311, 0.572931]
     sd = [0.246431, 0.24439, 0.25317]
     transform_pipeline = transforms.Compose([
@@ -32,11 +39,17 @@ def transform(image):
     return transformed_image
 
 def getImageData():
+    '''
+    Scrapes an image and returns transformed image data.
+    '''
     image = download_image()
     image = transform(image)
     return image
 
 def getString():
+    '''
+    Scrapes a string of text from a weather reporting website.
+    '''
     url = 'https://www.localconditions.com/weather-lake-cachuma-california/93464/'
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0'
@@ -52,6 +65,9 @@ def getString():
         print(f"An error occurred: {e}")
 
 def parse(text):
+    '''
+    Parses the text for desired statistics. Returns a formatted tensor ready for model evaluation.
+    '''
     temperature_pattern = r"It is (\d+) degrees fahrenheit"
     humidity_pattern = r"humidity is (\d+\.?\d*) percent"
     dew_point_pattern = r"dew point of (\d+\.?\d*) degrees fahrenheit"
@@ -78,16 +94,25 @@ def parse(text):
     return data
     
 def getTextData():
+    '''
+    Scrapes the text and returns a tensor for the model and the string of text.
+    '''
     textString = getString()
     textData = parse(textString)
     return textData, textString
 
 def getData():
+    '''
+    Collects the textual data and image to be evaluated by the model. Also returns the weather report string.
+    '''
     textData, textString = getTextData()
     image = getImageData()
     return textData, textString, image
 
 def printText(text):
+    '''
+    Function to format the weather report string.
+    '''
     # Define regex patterns
     temperature_pattern = r"It is (\d+) degrees fahrenheit"
     dew_point_pattern = r"dew point of (\d+\.?\d*) degrees fahrenheit"
@@ -127,6 +152,9 @@ def printText(text):
     return result
 
 def printPredictionResults(image_result, mlp_result):
+    '''
+    Function to format the prediction results.
+    '''
     result = (
         f"<strong>Image Classifier:</strong><br>"
         f"  Accuracy: {image_result['prediction_accuracy']}<br>"

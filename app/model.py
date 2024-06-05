@@ -1,6 +1,10 @@
 import torch
 
 class ImageModel:
+    '''
+    This is a resnet18 model trained for binary classification of images.
+    It predicts fog or no fog, and gives a prediction accuracy as a percentage.
+    '''
     def __init__(self, path):
         self.model = torch.jit.load(path)
         self.model.eval()
@@ -29,6 +33,10 @@ class ImageModel:
     
 
 class MLPModel:
+    '''
+    This is a multilayer perceptron model trained to predict the binary 
+    fog or no fog based on current weather observations.
+    '''
     def __init__(self, path):
         self.model = torch.jit.load(path)
         self.model.eval()
