@@ -98,9 +98,6 @@ fog_app/
 │   └── mlp_model_scripted.pt
 ├── static/
 │   └── styles.css
-├── tests/
-│   ├── __init__.py
-│   └── test_service.py
 ├── README.md
 ├── requirements.txt
 ├── run.py
@@ -110,7 +107,6 @@ fog_app/
 - `app/`: Contains the main application code.
 - `saved_models/`: Pre-trained machine learning models.
 - `static/`: Static files like CSS.
-- `tests/`: Unit tests for the application.
 - `README.md`: Project documentation.
 - `requirements.txt`: Lists the project dependencies.
 - `run.py`: Entry point for the Flask application.
