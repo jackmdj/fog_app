@@ -3,14 +3,45 @@
 <head>
     <title>Prediction Result</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Prediction Result</h1>
-    <h2>Weather Information</h2>
-    <p>{{ text_info|safe }}</p> <!-- Use safe filter to render the string correctly -->
-
-    <h2>Predictions</h2>
-    <p>{{ prediction_results|safe }}</p> <!-- Use safe filter to render the string correctly -->
-    <a href="{{ url_for('routes.index') }}">Back</a>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div class="section">
+            <h2>Weather Information</h2>
+            <p>{{ text_info|safe }}</p>
+        </div>
+        <div class="section">
+            <h2>Predictions</h2>
+            <p>{{ prediction_results|safe }}</p>
+        </div>
+        <a class="back-link" href="{{ url_for('routes.index') }}">Back</a>
+    </div>
 </body>
 </html>

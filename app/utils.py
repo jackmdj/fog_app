@@ -116,25 +116,23 @@ def printText(text):
     
     # Print the information in an organized format
     result = (
-        f"Weather Report:\n"
-        f"Sky Condition: {sky_condition}\n"
-        f"Temperature: {temperature} F\n"
-        f"Dew Point: {dew_point} F\n"
-        f"Humidity: {humidity} %\n"
-        f"Wind: {wind_direction} at {wind_speed} mph, gusting at {wind_gust} mph\n"
-        f"Sunrise: {sunrise}\n"
-        f"ML Fog Predictions:\n"
+        f"<strong>Sky Condition:</strong> {sky_condition}<br>"
+        f"<strong>Temperature:</strong> {temperature} F<br>"
+        f"<strong>Dew Point:</strong> {dew_point} F<br>"
+        f"<strong>Humidity:</strong> {humidity} %<br>"
+        f"<strong>Wind:</strong> {wind_direction} at {wind_speed} mph, gusting at {wind_gust} mph<br>"
+        f"<strong>Sunrise:</strong> {sunrise}<br>"
     )
     
     return result
 
 def printPredictionResults(image_result, mlp_result):
     result = (
-        "Image Classifier:\n"
-        f"  Accuracy: {image_result['prediction_accuracy']}\n"
-        f"  Prediction: {image_result['prediction']}\n\n"
-        "MLP:\n"
-        f"  Probability of Fog: {mlp_result['probability_of_fog']}\n"
-        f"  Prediction: {mlp_result['prediction']}\n"
+        f"<strong>Image Classifier:</strong><br>"
+        f"  Accuracy: {image_result['prediction_accuracy']}<br>"
+        f"  Prediction: {image_result['prediction']}<br><br>"
+        f"<strong>MLP:</strong><br>"
+        f"  Probability of Fog: {mlp_result['probability_of_fog']}<br>"
+        f"  Prediction: {mlp_result['prediction']}<br>"
     )
     return result
