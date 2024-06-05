@@ -31,6 +31,7 @@ This project is a Flask-based web application that predicts the likelihood of fo
 
 2. **Create and activate a virtual environment**:
    ```bash
+   pip install venv
    python -m venv venv
    venv\Scripts\activate
    ```
@@ -40,12 +41,7 @@ This project is a Flask-based web application that predicts the likelihood of fo
    pip install -r requirements.txt
    ```
 
-4. **Run the terminal application**:
-   ```bash
-   python runTerminal.py
-   ```
-
-5. **Run the web application**:
+4. **Run the web application**:
    ```bash
    python run.py
    ```
@@ -116,7 +112,7 @@ fog_app/
 
 ### Web Scraping
 
-The application uses BeautifulSoup to scrape weather data from a reliable source. The data includes temperature, humidity, dew point, wind speed, and sky condition.
+The application uses BeautifulSoup to scrape weather data from multiple sources. The data includes an image, temperature, humidity, dew point, wind speed, and sky condition.
 
 ### Machine Learning Models
 
