@@ -133,7 +133,7 @@ The predictive models used in this application are the result of extensive resea
 
 The foundational work for this project is documented in the [fog_research](https://github.com/jackmdj/fog_research) repository. The research focused on collecting and analyzing weather data relevant to fog prediction at Lake Cachuma, CA. Key steps included:
 
-1. **Data Collection**: Web scraping techniques were used to gather real-time weather data and an image of the lake. Data points such as temperature, humidity, dew point, wind speed, and sky condition were collected.
+1. **Data Collection**: Web scraping techniques were used to gather real-time weather data and an image of the lake.
 
 2. **Data Preprocessing**: The collected data was cleaned, preprocessed, and organized to ensure quality and consistency. Missing values were handled, and relevant features were engineered to improve model performance.
 
