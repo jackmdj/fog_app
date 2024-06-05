@@ -12,7 +12,7 @@ This project is a Flask-based web application that predicts the likelihood of fo
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Implementation Details](#implementation-details)
-- [Significance](#significance)
+- [Research and Model Training](#research-and-model-training)
 - [Contributing](#contributing)
 
 ## Features
@@ -125,9 +125,42 @@ The application uses BeautifulSoup to scrape weather data from multiple sources.
 2. **Data Processing**: The data is processed and transformed into a format suitable for the models.
 3. **Prediction**: The processed data is fed into the machine learning models to get the prediction results.
 
-## Significance
+## Research and Model Training
 
-The UCSB rowing team often drives 35 minutes to Lake Cachuma early in the morning, only to find that they cannot row due to fog. This application provides an accurate prediction of fog conditions, helping the team make informed decisions about their trips. By doing so, it saves time, effort, and resources, and ensures that the team can plan their practice sessions more effectively.
+The predictive models used in this application are the result of extensive research and development carried out in a separate repository. This section provides an overview of the process, from data collection to model evaluation.
+
+### Data Collection
+
+The foundational work for this project is documented in the [fog_research](https://github.com/jackmdj/fog_research) repository. The research focused on collecting and analyzing weather data relevant to fog prediction at Lake Cachuma, CA. Key steps included:
+
+1. **Data Collection**: Web scraping techniques were used to gather real-time weather data and an image of the lake. Data points such as temperature, humidity, dew point, wind speed, and sky condition were collected.
+
+2. **Data Preprocessing**: The collected data was cleaned, preprocessed, and organized to ensure quality and consistency. Missing values were handled, and relevant features were engineered to improve model performance.
+
+### Model Training
+
+The model training process involved several key stages:
+
+1. **Feature Selection**: Relevant features were selected based on their correlation with fog occurrence. This included weather parameters like temperature, humidity, dew point, and wind speed.
+
+2. **Model Selection**: Different machine learning models were evaluated. The final models selected were:
+   - **Image Classification Model**: A Convolutional Neural Network (CNN) based on ResNet-18, trained to recognize foggy conditions from images.
+   - **MLP Model**: A custom Multi-Layer Perceptron (MLP) that uses weather data points to predict the probability of fog.
+
+3. **Training and Validation**: The models were trained on the collected data and validated using a separate validation set to ensure they generalize well to new data. Cross-validation techniques were used to fine-tune hyperparameters and improve model performance.
+
+### Model Evaluation
+
+The models were evaluated to ensure they meet the required accuracy and reliability for practical use. The evaluation process included:
+
+1. **Accuracy and Precision**: Metrics such as accuracy, precision, recall, and F1-score were used to assess model performance.
+
+2. **Confusion Matrix**: A confusion matrix was plotted to visualize the performance of the classification models, identifying true positives, false positives, true negatives, and false negatives.
+
+3. **ROC Curve**: The Receiver Operating Characteristic (ROC) curve and Area Under the Curve (AUC) were used to evaluate the model's ability to distinguish between fog and no-fog conditions.
+
+For more detailed information on the research, model training, data collection, and evaluation process, please refer to the [fog_research](https://github.com/jackmdj/fog_research) repository.
+
 
 ## Contributing
 
